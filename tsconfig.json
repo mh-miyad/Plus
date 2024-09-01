@@ -11,8 +11,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "typeRoots": ["./node_modules/@types", "./src/lib/locomotive-scroll.d.ts"],
-    "types": ["locomotive-scroll"],
     "incremental": true,
     "plugins": [
       {

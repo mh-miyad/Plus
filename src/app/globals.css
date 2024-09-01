@@ -79,6 +79,9 @@
 }
 
 @layer base {
+  html {
+    @apply overflow-y-scroll   scrollbar-none scrollbar-thumb-green-300 scrollbar-track-white;
+  }
   * {
     @apply border-border;
   }
