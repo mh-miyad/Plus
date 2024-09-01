@@ -6,10 +6,7 @@ const LenisProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll({
-        el: scrollRef.current || undefined,
-        smooth: true,
-      });
+      const locomotiveScroll = new LocomotiveScroll({});
     })();
   }, []);
 
