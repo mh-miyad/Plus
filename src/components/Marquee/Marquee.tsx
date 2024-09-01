@@ -40,15 +40,15 @@ const Marquee = () => {
   }, []);
 
   return (
-    <section className="w-full flex items-center h-screen">
+    <section className="">
       <div className="w-full overflow-hidden bg-white">
         <div className="flex items-center h-full gap-10" ref={marqueeRef}>
           {images.map((image, index) => (
-            <div key={index} className="marquee-item w-64 lg:h-24 h-full">
+            <div key={index} className="marquee-item flex-1 flex-shrink">
               <Image
                 src={image}
                 alt={`Brand ${index + 1}`}
-                className="object-contain size-full"
+                className="object-contain w-96  lg:w-64 lg:h-24 h-full"
               />
             </div>
           ))}
