@@ -1,57 +1,87 @@
 "use client";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import img1 from "../../../public/m-1.png";
 import img2 from "../../../public/m-2.png";
 import img3 from "../../../public/m-3.svg";
 import img4 from "../../../public/m-4.png";
 
+gsap.registerPlugin(ScrollTrigger);
 const Marquee = () => {
+  const [isRotating, setIsRotating] = useState(true);
   const marqueeRef = useRef<HTMLDivElement>(null);
-  const images = [img1, img2, img3, img4];
 
   useEffect(() => {
-    const marqueeElement = marqueeRef.current;
-    if (marqueeElement) {
-      const items = marqueeElement.querySelectorAll(".marquee-item");
-      const totalWidth = Array.from(items).reduce((acc, item) => {
-        return acc + item.clientWidth;
-      }, 0);
+    const handleScroll = (e: WheelEvent) => {
+      setIsRotating(e.deltaY <= 0);
+    };
 
-      gsap.set(marqueeElement, {
-        width: totalWidth * 2,
-      });
+    window.addEventListener("wheel", handleScroll);
 
-      const clonedItems = Array.from(items).forEach((item) => {
-        marqueeElement.appendChild(item.cloneNode(true));
-      });
-
-      gsap.to(marqueeElement, {
-        x: `-${totalWidth}px`,
-        duration: 10,
-        ease: "linear",
-        repeat: -1,
-        modifiers: {
-          x: gsap.utils.unitize((x) => parseFloat(x) % totalWidth),
-        },
-      });
-    }
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
   }, []);
 
+  useEffect(() => {
+    const marquee = marqueeRef.current;
+    if (marquee) {
+      const totalWidth = marquee.scrollWidth / 2;
+
+      const animation = gsap.fromTo(
+        marquee,
+        { x: 0 }, // Start position
+        {
+          x: isRotating ? -totalWidth : totalWidth, // End position
+          modifiers: {
+            x: (x) => `${parseFloat(x) % totalWidth}px`,
+          },
+          duration: 40,
+          ease: "linear",
+          repeat: -1,
+        }
+      );
+
+      // Target the wrapper for ScrollTrigger
+
+      return () => {
+        animation.kill(); // Cleanup on unmount
+      };
+    }
+  }, [isRotating]);
+
   return (
-    <section className="">
-      <div className="w-full overflow-hidden bg-white">
-        <div className="flex items-center h-full gap-10" ref={marqueeRef}>
-          {images.map((image, index) => (
-            <div key={index} className="marquee-item flex-1 flex-shrink">
+    <section className="overflow-hidden">
+      <div className="main-marquee rotate-0">
+        {/* Added a wrapper for scrolling content */}
+        <div className="marquee-wrapper">
+          <div ref={marqueeRef} className="flex space-x-20">
+            {[
+              img1,
+              img2,
+              img3,
+              img4,
+              img1,
+              img2,
+              img3,
+              img4,
+              img3,
+              img4,
+              img1,
+              img2,
+              img3,
+              img4,
+            ].map((image, index) => (
               <Image
+                key={index}
                 src={image}
-                alt={`Brand ${index + 1}`}
-                className="object-contain w-96  lg:w-64 lg:h-24 h-full"
+                alt={`Image ${index + 1}`}
+                className="h-10 w-auto object-contain"
               />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
