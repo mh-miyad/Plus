@@ -79,9 +79,6 @@
 }
 
 @layer base {
-  html {
-    @apply scrollbar-none;
-  }
   * {
     @apply border-border;
   }
