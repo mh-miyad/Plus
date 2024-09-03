@@ -1,26 +1,55 @@
-import Marquee from "@/components/Marquee/Marquee";
-import StatusMarquee from "@/components/Marquee/Status";
+import StackingCards from "@/components/StackingCard/StackingCard";
 import LenisProvider from "@/layout/LenisProvider";
-import img_1 from "../images/img-17.jpg";
 
 export default function Home() {
   return (
     <>
       <LenisProvider>
-        <div
-          className="h-screen hero-bar bg-blue-300 "
-          data-scroll-container
-          style={{ backgroundImage: `url(${img_1})` }}
-        ></div>
-        <div className="h-screen bg-green-2 flex items-center ">
-          <Marquee />
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
+          ipsum facilis obcaecati culpa! Quia atque eos laborum dolore facilis
+          ipsum blanditiis praesentium, unde voluptates necessitatibus
+          consequuntur perferendis sit inventore? Voluptates?
         </div>
-        <div className="h-screen bg-purple-500  " data-scroll-container>
-          <StatusMarquee />
+        <div className=" relative">
+          <section className="h-screen bg-blue-400  sticky top-0 left-0">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse iusto
+            dolorum dolor doloribus in consequatur. Recusandae natus quis ut
+            suscipit architecto laboriosam qui velit, aperiam a culpa. Dolorum,
+            praesentium cum.
+          </section>
+          <section className="h-screen bg-green-400 sticky top-5">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse iusto
+            dolorum dolor doloribus in consequatur. Recusandae natus quis ut
+            suscipit architecto laboriosam qui velit, aperiam a culpa. Dolorum,
+            praesentium cum.
+          </section>
+          <section className="h-screen bg-yellow-400 sticky top-10">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse iusto
+            dolorum dolor doloribus in consequatur. Recusandae natus quis ut
+            suscipit architecto laboriosam qui velit, aperiam a culpa. Dolorum,
+            praesentium cum.
+          </section>
+          <section className="h-screen bg-yellow-400 sticky top-12">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse iusto
+            dolorum dolor doloribus in consequatur. Recusandae natus quis ut
+            suscipit architecto laboriosam qui velit, aperiam a culpa. Dolorum,
+            praesentium cum.
+          </section>
         </div>
-        <div className="h-screen bg-red-400 " data-scroll-container></div>
-        <div className="h-screen bg-red-500 " data-scroll-container></div>
-        <div className="h-screen bg-red-600 " data-scroll-container></div>
+        <div>
+          <StackingCards />
+          <StackingCards />
+          <StackingCards />
+          <StackingCards />
+          <StackingCards />
+        </div>
+        <footer>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, et
+          aliquid recusandae mollitia nobis quisquam voluptates magnam nisi
+          blanditiis provident ea tempore repellendus laborum esse. Optio magni
+          error eveniet rerum.
+        </footer>
       </LenisProvider>
     </>
   );

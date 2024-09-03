@@ -11,23 +11,13 @@ const LenisProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll: any = new LocomotiveScroll({
-        // Configure Locomotive Scroll options as needed
-        // For example:
-        // classes: {
-        //   scrollContainer: "scroll-container",
-        //   item: "scroll-item",
-        //   smooth: "smooth",
-        // },
-        // ...other options
-      });
+      const locomotiveScroll: any = new LocomotiveScroll({});
 
       locomotiveScroll.on("scroll", () => {
-        ScrollTrigger.refresh(); // Update ScrollTrigger after Locomotive Scroll updates
+        ScrollTrigger.refresh();
       });
 
       scrollRef.current?.addEventListener("wheel", (e) => {
-        // Prevent default scrolling behavior if Locomotive Scroll is handling it
         if (locomotiveScroll.options.smoothScroll) {
           e.preventDefault();
         }
