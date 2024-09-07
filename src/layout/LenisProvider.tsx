@@ -1,7 +1,10 @@
 "use client";
+import MouseCursor from "@/components/MouseCursor/MouseCursor";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Inter } from "next/font/google";
 import { useEffect, useRef } from "react";
+const inter = Inter({ subsets: ["latin"] });
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,9 +29,12 @@ const LenisProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <main data-scroll-container ref={scrollRef}>
-      {children}
-    </main>
+    <html lang="en">
+      <body className={`${inter.className}`}>
+        {children}
+        <MouseCursor />
+      </body>
+    </html>
   );
 };
 
