@@ -21,26 +21,3 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* styles/globals.css */
-
-.stacking-cards {
-  position: relative;
-  width: 200px;
-  height: 300px;
-  margin: 100px auto;
-  perspective: 1000px;
-}
-
-.stacking-main-card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #eaeaea;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform-origin: center bottom;
-}

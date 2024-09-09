@@ -3,9 +3,8 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 const MouseCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const isHovering = useRef<HTMLDivElement>(null);
   const mouseRef = useRef<HTMLDivElement>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({
@@ -17,22 +16,20 @@ const MouseCursor = () => {
     // Add event listener to track mouse movement
     window.addEventListener("mousemove", handleMouseMove);
 
-    // Cleanup event listener on component unmount
+    // Remove event listener when component unmounts
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [mousePosition]);
 
   // Move the cursor element with GSAP
   useEffect(() => {
-    if (!isHovering.current) {
-      gsap.to(cursorRef.current, {
-        x: mousePosition.x - 10, // Adjust based on cursor size
-        y: mousePosition.y - 10, // Adjust based on cursor size
-        ease: "power3.out",
-        duration: 0.3,
-      });
-    }
+    gsap.to(mouseRef.current, {
+      x: mousePosition.x - 10, // Adjust based on cursor size
+      y: mousePosition.y - 10, // Adjust based on cursor size
+      ease: "power3.out",
+      duration: 0.3,
+    });
   }, [mousePosition]);
 
   return (

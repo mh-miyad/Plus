@@ -1,5 +1,4 @@
 "use client";
-import MouseCursor from "@/components/MouseCursor/MouseCursor";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Inter } from "next/font/google";
@@ -30,10 +29,7 @@ const LenisProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
-        {children}
-        <MouseCursor />
-      </body>
+      <body className={`${inter.className}`}>{children}</body>
     </html>
   );
 };
