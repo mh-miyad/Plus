@@ -35,7 +35,7 @@ const MouseCursor = () => {
   return (
     <>
       <div
-        className="size-6 bg-black opacity-35 fixed top-0 left-0 rounded-full z-10"
+        className="size-6 bg-black opacity-35 fixed top-0 left-0 rounded-full z-10 cursor-none"
         ref={mouseRef}
         id="mouse"
       ></div>

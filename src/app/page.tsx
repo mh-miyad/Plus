@@ -1,8 +1,6 @@
-import MouseCursor from "@/components/MouseCursor/MouseCursor";
-
 export default function Home() {
   return (
-    <main className="z-20">
+    <>
       <section className="h-screen bg-blue-400">
         <p className="text-[6rem]">Lorem ipsum dolor sit amet</p>
       </section>
@@ -12,7 +10,6 @@ export default function Home() {
         incidunt voluptatibus! Dolore omnis unde laborum dolores, odio porro
         modi.
       </section>
-      <MouseCursor />
-    </main>
+    </>
   );
 }

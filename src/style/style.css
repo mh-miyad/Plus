@@ -21,3 +21,61 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* styles/globals.css */
+
+.loader {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.loader span {
+  width: 5px;
+  height: 0;
+  transition: all 0.5s linear;
+  background-color: gray;
+  border-radius: 100px;
+  animation: loader 1.5s linear infinite;
+  -webkit-animation: loader 1.5s linear infinite;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+}
+
+.loader span:nth-child(1) {
+  animation-delay: 0.1s;
+  background: #f05a7e;
+}
+.loader span:nth-child(2) {
+  animation-delay: 0.2s;
+  background: #41b3a2;
+}
+.loader span:nth-child(3) {
+  animation-delay: 0.3s;
+  background: #1679ab;
+}
+.loader span:nth-child(4) {
+  animation-delay: 0.4s;
+  background: #fabc3f;
+}
+.loader span:nth-child(5) {
+  animation-delay: 0.5s;
+  background-color: #697565;
+}
+
+@keyframes loader {
+  0% {
+    height: 0;
+    background: gray;
+  }
+  50% {
+    width: 8px;
+    height: 100px;
+  }
+  100% {
+    height: 0;
+  }
+}
